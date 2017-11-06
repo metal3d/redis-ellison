@@ -12,5 +12,6 @@ RUN set -xe; \
     ln -s /go/bin/redis-ellison /usr/bin/redis-ellison;
 
 
+EXPOSE 6379
 CMD ["redis-ellison"]
 

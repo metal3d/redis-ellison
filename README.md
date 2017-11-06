@@ -6,7 +6,7 @@ Redis provides sentinels to elect a leader (master) that is able to write data w
 
 Redis-Ellison is a proxy that will interact with sentinels and master to send and get data from the master (as this time, it cannot make distinction between get and set), so that clients can connect Redis Ellison as if it was the master, and ellison will make data routing.
 
-![](docs/diagram.png)
+![](./docs/diagram.png)
 
 Ellison is scallable, so you can use it in a PaaS as Openshift/Kubernetes and scale up. The "service" will load-balance on each Redis-Ellison server.
 
@@ -16,7 +16,18 @@ NOTE: At this time, you need "redis-cli" command installed on your server to be 
 
 # Installation
 
-At this time, you should use "`go get`" command, but there will be releases with binaries and Docker images very soon.
+## Docker
+
+You may get docker image:
+
+```
+docker pull metal3d/redis-ellison
+docker run --rm -it metal3d/redis-ellison
+```
+
+## Binary installation with `go get`
+
+At this time, you should use "`go get`" command.
 
 ```
 go get -u github.com/metal3d/redis-ellison
@@ -38,10 +49,10 @@ Usage of ellison:
 
 Note: each flag can be overriden by an environment variable that respect the flag.:
 
-- `CLUSTER`
-- `REDIS_COMMAND`
-- `SENTINEL_HOST`
-- `SENTINEL_PORT`
+- `CLUSTER` - default to "mymaster"
+- `REDIS_COMMAND` - default to "redis-cli"
+- `SENTINEL_HOST` - default to "127.0.0.1"
+- `SENTINEL_PORT` - default to "26379" (redis port + 2000)
 
 So that, it's simpler to inject configuration in a Docker container.
 
