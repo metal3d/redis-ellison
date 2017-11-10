@@ -91,7 +91,6 @@ func handleConn(client net.Conn) {
 func dataCopy(from, to net.Conn) {
 	defer from.Close()
 	io.Copy(from, to)
-	log.Println("Connection is now close", from.RemoteAddr())
 }
 
 func main() {
