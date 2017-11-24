@@ -87,6 +87,7 @@ func handleConn(client net.Conn) {
 
 	if err != nil {
 		log.Println(err)
+		client.Close()
 		return
 	}
 
